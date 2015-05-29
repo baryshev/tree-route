@@ -3,7 +3,7 @@ tree-route - request router
 
 tree-route is a performance focused request router with regular expressions support.
 
-Instalation
+Installation
 -----------
 
 Install the latest version with `npm install --save tree-route`
