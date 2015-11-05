@@ -37,8 +37,8 @@ describe('Router', function () {
     });
 
     it('should match regexp in params', function () {
-        router.get('/users/{name:^[a-zA-Z]+$}', 'handler3');
-        router.get('/users/{id:^[0-9]+$}', 'handler4');
+        router.get('/users/{name:[a-zA-Z]+}', 'handler3');
+        router.get('/users/{id:[0-9]+}', 'handler4');
 
         var result = router.dispatch('GET', '/users/@test');
         assert.equal(404, result['error']['code']);
@@ -67,5 +67,13 @@ describe('Router', function () {
         router.setRoutes(routes);
         var result = router.dispatch('GET', '/');
         assert.equal('handler0', result['handler']);
+    });
+
+    it('should ignore query string if it exists', function () {
+        router.get('/news/{id}', 'handler2');
+        var result = router.dispatch('GET', '/news/1?page=2');
+
+        assert.equal('handler2', result['handler']);
+        assert.equal('1', result['params']['id']);
     });
 });

@@ -1,6 +1,6 @@
 {
   "name" : "tree-route",
-  "version" : "1.0.0",
+  "version" : "2.0.0",
   "description" : "Perfomance focused request router",
   "keywords" : [ "routing", "router" ],
   "author" : "Vadim Baryshev <vadimbaryshev@gmail.com>",
