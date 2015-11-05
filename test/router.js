@@ -70,10 +70,15 @@ describe('Router', function () {
     });
 
     it('should ignore query string if it exists', function () {
-        router.get('/news/{id}', 'handler2');
         var result = router.dispatch('GET', '/news/1?page=2');
-
         assert.equal('handler2', result['handler']);
         assert.equal('1', result['params']['id']);
+    });
+
+    it('should know allowed methods', function () {
+        var result = router.getOptions('/news/1?page=2');
+        assert.deepEqual(['GET'], result);
+        var result = router.getOptions('/notExistedRoute');
+        assert.deepEqual(null, result);
     });
 });
