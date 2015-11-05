@@ -79,6 +79,6 @@ describe('Router', function () {
         var result = router.getOptions('/news/1?page=2');
         assert.deepEqual(['GET'], result);
         var result = router.getOptions('/notExistedRoute');
-        assert.deepEqual(null, result);
+        assert.equal(null, result);
     });
 });
